@@ -17,9 +17,10 @@ app.get('/', (req, res) => {
 
 // Handle WebSocket connections
 io.on('connection', (socket) => {
-
-  //write your code here
-
+  console.log("New Client connected")
+  socket.on('disconnect', () => {
+    console.log("User Disconnected")
+  })
 });
 
 // Start the server
@@ -28,4 +29,4 @@ server.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
 
-module.exports = {app}
+module.exports = { app }
